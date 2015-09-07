@@ -1,0 +1,54 @@
+<%= form_for(@post) do |f| %>
+
+    <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+    <% if @post.errors.any? %>
+    <%= @post.errors.messages[:title][0] %>
+    <% end %>
+    </p>
+
+    <div>
+      <% if @post.image? %>
+      <div>
+       <%= image_tag @post.image.url %>
+     </div>
+     <% end %><br>
+     <%= f.label :image %><br>
+     <%= f.file_field :image %>
+     <%= f.hidden_field :image_cache %>
+    </div>
+
+    <div>
+      <% if @post.image? %>
+      <div>
+        <%= image_tag @post.image.url %>
+    </div>
+     <% end %><br>
+     <%= f.file_field :image %>
+     <%= f.hidden_field :image_cache %>
+    </div>
+
+    <div>
+      <% if @post.image? %>
+      <div>
+        <%= image_tag @post.image.url %>
+      </div>
+      <% end %><br>
+      <%= f.file_field :image %>
+      <%= f.hidden_field :image_cache %>
+    </div>
+
+    <div>
+    <% if @post.persisted? && @post.image? %>
+    <label>
+    <%= f.check_box :remove_image %>
+    画像を削除 
+    </label> 
+    <% end %>
+    </div>
+
+    <p>
+    <%= f.submit %>
+    </p>
+<% end %>

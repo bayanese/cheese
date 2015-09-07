@@ -1,0 +1,19 @@
+<h1> Social Network Service </h1>
+
+<p><%= link_to "What's on your mind?", new_post_path %></p>
+
+<ul>
+  <% @posts.each do |post| %>
+  <li>
+  <%= post.title%><br>
+
+  <%= link_to "[Edit]", edit_post_path(post.id) %>
+   
+  <%= link_to "[Delete]", post_path(post.id), method: :delete, data: {confirm: "sure?" } %>
+
+ </li>
+  <% end %>
+</ul>
+
+
+
